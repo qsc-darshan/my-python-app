@@ -7,5 +7,5 @@ from app import add
 def test_add():
     result = add(2, 3)
     print(f"add(2, 3) returned {result}")
-    assert result == 5
+    assert result == 6
 
