@@ -204,7 +204,7 @@ def check_test_suite_items(xml_path, test_suite_name):
         return f"Failed to check test suite '{test_suite_name}'."
 
 
-def fetch_build_data(jenkins_url):
+def test_fetch_build_data(jenkins_url):
     """
     Fetch build data from Jenkins.
 
@@ -223,7 +223,7 @@ def fetch_build_data(jenkins_url):
         return None
 
 
-def find_artifact(build_data, extension='.exe'):
+def test_find_artifact(build_data, extension='.exe'):
     """
     Find an artifact with the specified extension in the build data.
 
@@ -241,7 +241,7 @@ def find_artifact(build_data, extension='.exe'):
     return None, None
 
 
-def download_file(url, file_name):
+def test_download_file(url, file_name):
     """
     Download a file from the specified URL with a progress bar.
 
@@ -342,7 +342,7 @@ def run_scheduled_task(task_name, log_file_path):
         print(f"File operation failed. Error: {e}")
         return None
     
-def run_bat_file(bat_file_path, log_file_path):
+def test_run_bat_file(bat_file_path, log_file_path):
     """
     Run a .bat file and monitor its log file.
 
@@ -391,7 +391,7 @@ def run_bat_file(bat_file_path, log_file_path):
         return None
 
 
-def check_status(status):
+def test_check_status(status):
     """
     Check the status of the test run and exit the script if it failed.
 
@@ -462,11 +462,11 @@ if __name__ == "__main__":
     # update_email_description(XML_PATH, commit_message)
 
     # Fetch build data from Jenkins
-    build_data = fetch_build_data(JENKINS_URL)
+    build_data = test_fetch_build_data(JENKINS_URL)
     if build_data:
-        artifact_url, artifact_name = find_artifact(build_data)
+        artifact_url, artifact_name = test_find_artifact(build_data)
         if artifact_url and artifact_name:
-            downloaded_file = download_file(artifact_url, artifact_name)
+            downloaded_file = test_download_file(artifact_url, artifact_name)
             if downloaded_file:
                 print("----------------------------")
                 print(f"File '{downloaded_file}' downloaded successfully!")
@@ -476,8 +476,8 @@ if __name__ == "__main__":
 
                 # Run the scheduled task
                 # status = run_scheduled_task("RunQATAdmin", LOG_FILE_PATH)
-                status = run_bat_file(QAT_FILE_PATH, LOG_FILE_PATH)
-                check_status(status)
+                status = test_run_bat_file(QAT_FILE_PATH, LOG_FILE_PATH)
+                test_check_status(status)
                 
         else:
             print("No .exe file found in the latest build artifacts.")
