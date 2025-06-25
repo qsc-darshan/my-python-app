@@ -18,6 +18,7 @@ TEST_SUITES_DICT = {
 
 # Constants
 REPO_URL = "https://github.com/Darshan-qsc/Github-repo.git" 
+GITHUB_TOKEN = ''
 REPO_PATH = r"C:\Users\darshan.s\Documents\Automation_Run_for_Testing_QAT\repo"
 XML_PATH = r"C:\Users\darshan.s\Documents\Automation_Run_for_Testing_QAT\config-file.xml"
 JENKINS_URL = "http://urda:8080/job/SQA/job/QAT_Test_Automation_Source_Build/lastSuccessfulBuild/api/json"
